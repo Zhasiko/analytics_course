@@ -1,0 +1,582 @@
+:root {
+  --bg: #11161f;
+  --bg-soft: #161d27;
+  --surface: #19212d;
+  --surface-alt: rgba(25, 33, 45, 0.76);
+  --surface-strong: rgba(21, 29, 40, 0.92);
+  --border: rgba(103, 126, 155, 0.2);
+  --text: #eef5ff;
+  --muted: #a9b6c8;
+  --primary: #00d5ff;
+  --primary-deep: #00a9d1;
+  --shadow: 0 0 0 1px rgba(0, 213, 255, 0.08), 0 18px 50px rgba(0, 0, 0, 0.28);
+  --shadow-hover: 0 0 0 1px rgba(0, 213, 255, 0.16), 0 24px 65px rgba(0, 0, 0, 0.36);
+  --radius-lg: 22px;
+  --radius-md: 16px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(0, 213, 255, 0.14), transparent 35%),
+    linear-gradient(180deg, #0b1118, #11161f 24%, #10151d 100%);
+  color: var(--text);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.22;
+  z-index: -1;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.container {
+  width: min(100% - 32px, 1200px);
+  margin: 0 auto;
+}
+
+.narrow {
+  max-width: 1080px;
+}
+
+.slim {
+  max-width: 860px;
+}
+
+.section {
+  position: relative;
+  padding: 88px 0;
+}
+
+.section-muted {
+  background: rgba(25, 33, 45, 0.34);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(0, 213, 255, 0.2), transparent 28%),
+    radial-gradient(circle at 80% 10%, rgba(0, 213, 255, 0.12), transparent 24%),
+    linear-gradient(135deg, rgba(18, 25, 34, 0.2), rgba(8, 12, 18, 0.55)),
+    url("https://httpanalytics-coursepro.lovable.app/assets/hero-bg-D154X1C1.jpg") center/cover no-repeat;
+  opacity: 0.42;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(11, 17, 24, 0.58),
+    rgba(11, 17, 24, 0.82) 50%,
+    rgba(17, 22, 31, 0.96)
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 980px;
+  padding: 80px 0;
+}
+
+.hero-content::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  width: min(220px, 42vw);
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 213, 255, 0.95),
+    transparent
+  );
+  box-shadow: 0 0 18px rgba(0, 213, 255, 0.4);
+}
+
+h1,
+h2 {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+h1 {
+  font-size: clamp(2.35rem, 5vw, 4.65rem);
+  line-height: 1.08;
+  margin-bottom: 28px;
+}
+
+h1 span,
+.accent-text,
+.salary-card strong,
+.mentor-card span {
+  color: var(--primary);
+  text-shadow: 0 0 18px rgba(0, 213, 255, 0.35);
+}
+
+.hero-subtitle,
+.section-header p,
+.lead-text,
+.salary-note,
+.info-card p,
+.check-item p,
+.mentor-card p,
+.salary-title {
+  color: var(--muted);
+}
+
+.hero-subtitle {
+  max-width: 760px;
+  margin: 0 auto 36px;
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-weight: 500;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 58px;
+  padding: 0 32px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #1ce2ff, #00c6ee);
+  color: #071019;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.18) inset,
+    0 18px 35px rgba(0, 213, 255, 0.22);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+  cursor: pointer;
+}
+
+.cta-button:hover,
+.cta-button:focus-visible {
+  transform: translateY(-2px) scale(1.01);
+  background: linear-gradient(180deg, #4be7ff, #11d6fb);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.24) inset,
+    0 22px 42px rgba(0, 213, 255, 0.28);
+}
+
+.cta-button.wide {
+  width: 100%;
+}
+
+.section-header {
+  margin-bottom: 48px;
+}
+
+.section-header.centered,
+.centered-block {
+  text-align: center;
+}
+
+.section-header h2 {
+  font-size: clamp(2rem, 4vw, 3.35rem);
+  margin-bottom: 14px;
+  text-wrap: balance;
+}
+
+.title-icon {
+  display: inline-block;
+  margin-right: 10px;
+  filter: drop-shadow(0 0 12px rgba(0, 213, 255, 0.22));
+}
+
+.section-header p,
+.lead-text {
+  font-size: 1.125rem;
+}
+
+.card-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.three-cols {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.four-cols {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.info-card,
+.check-item,
+.salary-card,
+.mentor-card,
+.audience-card,
+.faq-item,
+.mini-badge {
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.info-card,
+.check-item,
+.salary-card,
+.mentor-card {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 45%),
+    var(--surface-alt);
+  backdrop-filter: blur(10px);
+}
+
+.info-card::before,
+.check-item::before,
+.salary-card::before,
+.mentor-card::before,
+.audience-card::before,
+.faq-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 213, 255, 0.12),
+    transparent 30%,
+    transparent 70%,
+    rgba(255, 255, 255, 0.03)
+  );
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.info-card {
+  padding: 28px 24px;
+  border-radius: var(--radius-lg);
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 213, 255, 0.28);
+  box-shadow: var(--shadow-hover);
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 18px;
+  border-radius: 14px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 213, 255, 0.2),
+    rgba(0, 213, 255, 0.08)
+  );
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1.15rem;
+  box-shadow: inset 0 0 0 1px rgba(0, 213, 255, 0.12);
+}
+
+.info-card p,
+.check-item p,
+.mentor-card p,
+.audience-card p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.audience-card,
+.faq-item {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 45%),
+    var(--surface-alt);
+  backdrop-filter: blur(10px);
+}
+
+.audience-card {
+  padding: 24px 22px;
+  border-radius: var(--radius-lg);
+}
+
+.audience-card h3 {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.check-list {
+  display: grid;
+  gap: 16px;
+}
+
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 22px 24px;
+  border-radius: var(--radius-md);
+}
+
+.check-mark {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(0, 213, 255, 0.14);
+  color: var(--primary);
+  font-weight: 700;
+  box-shadow: inset 0 0 0 1px rgba(0, 213, 255, 0.18);
+}
+
+.lead-text {
+  max-width: 760px;
+  margin: 0 auto 14px;
+}
+
+.lead-text.small {
+  margin-bottom: 10px;
+}
+
+.accent-text {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.salary-card,
+.mentor-card {
+  padding: 40px 34px;
+  border-radius: 24px;
+}
+
+.salary-card strong {
+  display: block;
+  margin-bottom: 14px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  line-height: 1;
+}
+
+.salary-title {
+  margin: 0 0 10px;
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.salary-note {
+  margin: 0;
+}
+
+.mentor-card {
+  display: grid;
+  gap: 14px;
+  text-align: left;
+}
+
+.tools-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+.tool-pill {
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01)),
+    var(--surface-strong);
+  color: var(--text);
+  font-weight: 600;
+  box-shadow: var(--shadow);
+}
+
+.mini-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 18px;
+  margin-bottom: 20px;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 213, 255, 0.12),
+    rgba(0, 213, 255, 0.05)
+  );
+  color: var(--primary);
+  font-size: 0.95rem;
+  font-weight: 700;
+  backdrop-filter: blur(8px);
+}
+
+.cta-section {
+  padding-bottom: 96px;
+}
+
+.cta-section .cta-button {
+  min-width: min(100%, 320px);
+}
+
+.faq-list {
+  display: grid;
+  gap: 14px;
+}
+
+.faq-item {
+  border-radius: var(--radius-lg);
+}
+
+.faq-question {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 24px;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.faq-toggle {
+  color: var(--primary);
+  font-size: 1.4rem;
+  line-height: 1;
+  flex: 0 0 auto;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+}
+
+.faq-answer p {
+  margin: 0;
+  padding: 0 24px 24px;
+  color: var(--muted);
+}
+
+@media (max-width: 960px) {
+  .three-cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .four-cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .section {
+    padding: 72px 0;
+  }
+
+  .section-header {
+    margin-bottom: 34px;
+  }
+
+  .three-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .four-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-content {
+    padding: 60px 0;
+  }
+
+  .hero-content::after {
+    bottom: 8px;
+  }
+
+  .cta-button {
+    width: 100%;
+  }
+
+  .salary-card,
+  .mentor-card,
+  .audience-card {
+    padding: 24px;
+  }
+
+  .faq-question {
+    padding: 18px 18px;
+  }
+
+  .faq-answer p {
+    padding: 0 18px 18px;
+  }
+}
